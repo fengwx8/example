@@ -67,11 +67,14 @@ func RequestIncrease() {
 	hour:=time.Now().Hour()
 	minute:=time.Now().Minute()
 	//转化成10进制对应的值，相当于小数部分
-	minutetopoint:=minute/60
+	minutetopoint:=float64(minute)/60
+	hours:=float64(hour)
 	//根据时间模拟流量，这也比较符合事实
 	//简单地用顶点为(13,10)的抛物线模拟比特率随时间变化的对应关系，则最低值为(13,10)，最高值为(0,94.5)
-	BdW = (hour + minutetopoint - 13) * (hour + minutetopoint - 13) / 2 + 10
-	bandWidth.Set(BdW)
+	//float64 BdW = (hours + minutetopoint - 13) * (hours + minutetopoint - 13) / 2 + 10
+	BdW:=float64(10)
+	BdW=BdW+(hours + minutetopoint - 13) * (hours + minutetopoint - 13) / 2
+	bitrate.Set(BdW)
 	//直接将可用率度量服务器的繁忙程度
 	getstate.Set(100 - BdW)
 
