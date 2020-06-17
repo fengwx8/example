@@ -71,7 +71,6 @@ func RequestIncrease() {
 	hours:=float64(hour)
 	//根据时间模拟流量，这也比较符合事实
 	//简单地用顶点为(13,10)的抛物线模拟比特率随时间变化的对应关系，则最低值为(13,10)，最高值为(0,94.5)
-	//float64 BdW = (hours + minutetopoint - 13) * (hours + minutetopoint - 13) / 2 + 10
 	BdW:=float64(10)
 	BdW=BdW+(hours + minutetopoint - 13) * (hours + minutetopoint - 13) / 2
 	bitrate.Set(BdW)
