@@ -9,4 +9,4 @@ spec:
   - name: default
     protocol: TCP
     port: 80
-      targetPort: 5565
+    targetPort: 5565
